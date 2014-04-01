@@ -1,0 +1,26 @@
+{
+    "name": "promaker/base",
+    "description": "Base de interfaces y clases abstractas para implementar Repository Pattern",
+    "keywords": ["base"],
+    "homepage": "https://github.com/promaker/Base",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis Guillermo Gallo Hernández",
+            "email": "ggallohernandez@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",ç
+    },
+    "autoload": {
+       "psr-0": { "Promaker\\Component\\Base\\": "" }
+    },
+    "target-dir": "Promaker/Component/Base",
+    "extra": {
+        "branch-alias": {
+            "master": "1.0"
+        }
+    }
+}
