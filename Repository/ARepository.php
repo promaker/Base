@@ -60,4 +60,62 @@ abstract class ARepository
      * @param Int $id
      */
     abstract public function removeById($id);
+
+    /**
+     * Setea el limite para efectuar en las operaciones de lectura
+     * 
+     * @param Int $limit
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (!isset($this->_persistence) || !($this->_persistence instanceof IPersistance)) {
+            throw new Exception("Repository Exception : No existe la interfaz de la persistencia o no implementa la interfaz IPersistance.");
+        }
+
+        $this->_persistence->setLimit($limit);
+
+        return $this;
+    }
+
+    /**
+     * Setea en la abstración de la persistencia el offset en base a la pagina y el limite asignado
+     * para efectuar en las operaciones de lectura
+     * 
+     * @param Int $page
+     * @return self
+     */
+    public function setPage($page)
+    {
+        if (!isset($this->_persistence) || !($this->_persistence instanceof IPersistance)) {
+            throw new Exception("Repository Exception : No existe la interfaz de la persistencia o no implementa la interfaz IPersistance.");
+        }
+
+        $limit = $this->_persistence->getLimit();
+
+        if (!isset($limit)) {
+            throw new Exception("Repository Exception : No estña seteado el limite de la operación de lectura.");
+        }
+
+        $this->_persistence->setOffset($limit * $page);
+
+        return $this;
+    }
+
+    /**
+     * Setea en la abstración de la persistencia el offset para efectuar en las operaciones de lectura
+     * 
+     * @param Int $page
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+        if (!isset($this->_persistence) || !($this->_persistence instanceof IPersistance)) {
+            throw new Exception("Repository Exception : No existe la interfaz de la persistencia o no implementa la interfaz IPersistance.");
+        }
+
+        $this->_persistence->setOffset($offset);
+
+        return $this;
+    }
 }
