@@ -3,7 +3,7 @@
     "description": "Base de interfaces y clases abstractas para implementar Repository Pattern",
     "keywords": ["base"],
     "homepage": "https://github.com/promaker/Base",
-    "type": "library",
+    "type": "package",
     "license": "MIT",
     "authors": [
         {
